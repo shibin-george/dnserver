@@ -14,7 +14,7 @@ except ImportError:
 __all__ = 'load_records', 'RecordType', 'Zone'
 
 RecordType = Literal[
-    'A', 'AAAA', 'CAA', 'CNAME', 'DNSKEY', 'MX', 'NAPTR', 'NS', 'PTR', 'RRSIG', 'SOA', 'SRV', 'TXT', 'SPF'
+    'A', 'AAAA', 'CAA', 'CNAME', 'DNSKEY', 'MX', 'NAPTR', 'NS', 'PTR', 'RRSIG', 'SOA', 'SRV', 'TXT', 'SPF', 'RP'
 ]
 RECORD_TYPES = RecordType.__args__  # type: ignore
 
