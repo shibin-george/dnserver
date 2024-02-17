@@ -39,6 +39,7 @@ TYPE_LOOKUP = {
     'SRV': (dns.SRV, QTYPE.SRV),
     'TXT': (dns.TXT, QTYPE.TXT),
     'SPF': (dns.TXT, QTYPE.TXT),
+    'RP': (dns.RP, QTYPE.RP)
 }
 DEFAULT_PORT = 53
 DEFAULT_UPSTREAM = '1.1.1.1'
@@ -100,6 +101,8 @@ def resolve(request, handler, records):
     # no direct zone so look for an SOA record for a higher level zone
     for record in records:
         if record.sub_match(request.q):
+            record.rr.rname = DNSLabel(request.q.qname)
+            record.rr.rtype = QTYPE.TXT
             reply.add_answer(record.rr)
 
     if reply.rr:
